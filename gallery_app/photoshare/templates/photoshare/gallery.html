@@ -9,6 +9,7 @@
 <style>
     .image-thumbnail{
         height: 200px;
+        object-fit: cover;
     }
 </style>
 <body class="m-5">
@@ -23,6 +24,9 @@
                         <li class="list-group-item">An item</li>
                         <li class="list-group-item">A second item</li>
                         <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">
+                            <a href="{% url 'add' %}" class="btn btn-success m-1">Add photo</a>
+                        </li>
                     </ul>
                 </div>
             </div>

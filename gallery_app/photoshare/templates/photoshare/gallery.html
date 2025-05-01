@@ -21,9 +21,10 @@
                         Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        {% for category in categories %}
+                            <li class="list-group-item">{{category}}</li>
+                        {% endfor %}
+                        
                         <li class="list-group-item">
                             <a href="{% url 'add' %}" class="btn btn-success m-1">Add photo</a>
                         </li>
@@ -33,17 +34,23 @@
             <div class="col-md-9">
                 <div class="row">
                     
+                    {% for photo in photos %}
                     <div class="col-md-4">
                         <div class="card my-2">
-                            <img 
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Domestic_Goose.jpg/1200px-Domestic_Goose.jpg" 
-                            class="image-thumbnail" alt="image">
+                            <img src="{{photo.image.url}}" class="image-thumbnail" alt="image">
                             <div class="card-body">
-                                <p>Category: Pets</p>
-                                <a href="{% url 'photo' 5%}" class="btn btn-success">View</a>
+                                <p>Category: <span class="text-success">{{photo.category.name}}</span></p>
+                                <a href="{% url 'photo' photo.id %}" class="btn btn-success">View</a>
                             </div>
                         </div>
                     </div>
+                    {% empty %}
+                    <div class="col justify-content-center">
+                        <h3>You have no photos...</h3>
+                        <p>Add now: </p>
+                        <a href="{% url 'add' %}" class="btn btn-success">Add</a>
+                    </div>
+                    {% endfor %}
 
                 </div>
             </div>

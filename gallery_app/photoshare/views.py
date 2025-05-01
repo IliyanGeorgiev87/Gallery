@@ -12,7 +12,9 @@ def gallery(request):
     return render(request, 'photoshare/gallery.html', context)
 
 def addPhoto(request):
-    return render(request, 'photoshare/add.html')
+    categories = Category.objects.all()
+    context = {'categories': categories}
+    return render(request, 'photoshare/add.html', context)
 
 def viewPhoto(request, pk):
     photos = Photo.objects.get(id=pk)

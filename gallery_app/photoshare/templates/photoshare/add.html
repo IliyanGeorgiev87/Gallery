@@ -1,1 +1,67 @@
-<h4>Add</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add photo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+</head>
+<body class="m-5">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Add photo</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="post" action="" enctype="multipart/form-data">
+                            <!--DESCRIPTION-->
+                            <div class="form-group m-3">
+                                <label class="mb-3">Input description: </label>
+                                <textarea name="description" class="form-control" rows="3" required  placeholder="Write your description here..." style="max-height: 250px;"></textarea>
+                            </div>
+
+                            <!--CATEGORY-->
+                            <div class="form-group m-3">
+                                <label class="mb-3">Select category: </label>
+                                <select name="category" class="form-select" required>
+                                    <option value='none'>Select a category</option>
+                                    {% for category in categories %}
+                                        <option value="{{category.id}}">{{category.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <!--CREATE CATEGORY-->
+                            <div class="form-group m-3">
+                                <label class="mb-3">Create a category:</label>
+                                <input type="text" class="form-control" placeholder="type in category" name="category_new">
+                            </div>
+
+                            <!--IMAGE FILE-->
+                            <div class="form-group m-3">
+                                <label class="mb-3">Upload image: </label>
+                                <input name="image" type="file" class="form-control-file" required>
+                            </div>
+
+                            <!--BUTTONS-->
+                            <div class="row justify-content-center mt-5">
+                                <button class="btn btn-primary" type="submit" style="width: 70%;">Add photo</button>
+                                <a href="{% url 'gallery' %}" class="btn btn-danger my-3" style="width: 70%;">Return to gallery</a>
+                            </div>
+
+                        </form>
+                    
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

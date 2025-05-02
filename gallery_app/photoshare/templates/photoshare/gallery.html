@@ -21,8 +21,15 @@
                         Categories
                     </div>
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'gallery' %}" class="text-dark" style="text-decoration: none;">All</a>
+                        </li>
                         {% for category in categories %}
-                            <li class="list-group-item">{{category}}</li>
+                            <li class="list-group-item" style="text-decoration: none;">
+                                <a href="{% url 'gallery' %}?category={{category.name}}" class="text-dark" style="text-decoration: none;">
+                                    {{category}}
+                                </a>
+                            </li>
                         {% endfor %}
                         
                         <li class="list-group-item">
